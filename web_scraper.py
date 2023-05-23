@@ -3,6 +3,15 @@ from bs4 import BeautifulSoup
 
 URL = 'https://en.wikipedia.org/wiki/History_of_Mexico'
 def  get_citations_needed_count(url):
+    """
+    Retrieves the count of citations needed on a webpage.
+
+    Args:
+        url (str): The URL of the webpage to analyze.
+
+    Returns:
+        int: The count of citations needed on the webpage.
+    """
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
     all_posts = soup.find_all('sup', class_='noprint Inline-Template Template-Fact')
@@ -16,6 +25,15 @@ print(get_citations_needed_count(URL))
 
 
 def  get_citations_needed_report(url):
+   """
+    Generates a report of citations needed on a webpage.
+
+    Args:
+        url (str): The URL of the webpage to analyze.
+
+    Returns:
+        str: The report of citations needed on the webpage.
+    """
    page = requests.get(url)
    soup = BeautifulSoup(page.content, 'html.parser')
    tiile = soup.find_all('sup', class_='noprint Inline-Template Template-Fact')
